@@ -1,0 +1,52 @@
+<DOCTYPE HTML>
+<html>
+
+<body>
+
+<script>
+
+//creating object with Object.create()
+var createhouse={
+  color:"none",
+  rooms:"0",
+  size:"0",
+  stat:function(){
+  	return "This house is "+this.color+", has "+this.rooms+" rooms, and is "+this.size+" square feet.";
+	}
+}
+var runningRope=Object.create(createhouse);
+runningRope.color="brown";
+runningRope.rooms="8";
+runningRope.size="2000";
+
+//creating Object using Factory function
+function factoryCreate (color,rooms,size){
+	var factoryhouse={};
+	factoryhouse.color=color;
+	factoryhouse.rooms=rooms;
+	factoryhouse.size=size;
+	factoryhouse.stat=function() {
+	return "This house is "+this.color+", has "+this.rooms+" rooms, and is "+this.size+" square feet.";
+	}
+	return factoryhouse;
+}
+var fachouse=factoryCreate ("red","10","10000");
+
+//creating Object using constructor
+function constructHouse (color,rooms,size){
+	this.color=color;
+	this.rooms=rooms;
+	this.size=size;
+}
+
+constructHouse.prototype.stat=function(){
+	return "This house is "+this.color+", has "+this.rooms+" rooms, and is "+this.size+" square feet.";
+}
+
+var conHouse= new constructHouse("blue","5","3000");
+
+</script>
+
+</body>
+
+</html>
